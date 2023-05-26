@@ -17,8 +17,7 @@ export default function SearchBar() {
                 className='w-72 h-12 p-6 pl-12 text-white bg-slate-400 placeholder:text-white'
                 />
             </div>
-            <select className='' name="Filter by region" id="">
-                <option selected> Filter by Region </option>
+            <select defaultValue='Filter by region' id="">
                 <option> África </option>
                 <option> America </option>
                 <option> Asia </option>
