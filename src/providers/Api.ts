@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = 'https://restcountries.com/v3.1/all';
+const apiUrl = 'https://restcountries.com/v3.1';
 
 export const api = axios.create({
     baseURL: apiUrl,
