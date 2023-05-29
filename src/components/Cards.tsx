@@ -1,18 +1,20 @@
 import Image from "next/image";
-export default function Card () {
+import { CountriesDataI } from "@/app/interfaces/CountriesData";
+import { Hi_Melody } from "next/font/google";
+export default function Card ({flag, name, region, capital, population}:CountriesDataI) {
+
     return(
-        <div className="flexflex-col bg-white w-1/4 h-1/2">
-            <Image
-            // src={countryFlag}
-            alt='german'
-            width={320}
-            height={300} 
+        <div className="flex flex-col bg-white w-1/5">
+            <img
+            className="w-full h-3/6"
+            src={flag}
+            alt='flag'
             />
-            <span> test </span>
+            <span> {name} </span>
             <div className="flex flex-col">
-                <span> Population </span>
-                <span> Region </span>
-                <span> Capital:</span>
+                <span> Population: {population}</span>
+                <span> Region: {region} </span>
+                <span> Capital: {capital}</span>
             </div>
         </div>
     )

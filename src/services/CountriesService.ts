@@ -3,7 +3,7 @@ import { api } from "@/providers/Api";
 const getAll = async () => {
     try {
         const response = await api.get('/all');
-        console.log(response);
+        return response.data;
     } catch (error) {
         console.log(error)
     }
