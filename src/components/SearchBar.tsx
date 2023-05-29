@@ -28,7 +28,7 @@ export default function SearchBar() {
                 onClick={handleSearch}
                 />
                 <input type="text" placeholder='Search for a country...'
-                className='w-72 h-12 p-6 pl-12 text-white bg-slate-400 placeholder:text-white'
+                className='w-72 h-12 pl-12 text-white bg-slate-400 placeholder:text-white'
                 onChange={e => setCountry(e.target.value)}
                 />
             </div>

@@ -25,9 +25,9 @@ export default function Home() {
   console.log(countries);
 
   return (
-    <div className='p-12 main-container bg-slate-800 h-screen max-h-screen'>
+    <div className='p-12 main-container bg-slate-800'>
      <SearchBar/>
-     <div className='flex flex-wrap w-full gap-16 mt-10'> 
+     <div className='flex flex-wrap w-full gap-20 mt-10'> 
       {countries.map((country,index)=> (
           <Card
           key={index}
