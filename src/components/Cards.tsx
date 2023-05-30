@@ -4,13 +4,7 @@ import { CountriesDataI } from "@/app/interfaces/CountriesData";
 import { useContext } from "react";
 import { CountryContext } from "@/context/CountryContext";
 import { CountriesServices } from "@/services";
-export default function Card ({flag, name, region, capital, population}:CountriesDataI) {
-
-    async function handleOnClick() {
-        const data = await CountriesServices.getByName(name);
-        const dataJSON = JSON.stringify(data);
-        localStorage.setItem('selectedCountryData', dataJSON);
-      }
+export default function Card ({flag, name, region, capital, population, handleOnClick}:CountriesDataI) {
 
     const styling = {
         width: '21.66%',
@@ -20,8 +14,6 @@ export default function Card ({flag, name, region, capital, population}:Countrie
         <div className="flex flex-col bg-slate-700 text-white shadow-xl hover:opacity-90 hover:cursor-pointer rounded-md" style={styling}
         onClick={handleOnClick}
         >
-            
-        <Link href='/SpecificCountry' className="h-full w-full">
             <img
             className="w-full h-3/6 border-2 border-slate-300"
             src={flag}
@@ -33,7 +25,6 @@ export default function Card ({flag, name, region, capital, population}:Countrie
                 <span> Region: {region} </span>
                 <span> Capital: {capital}</span>
             </div>
-        </Link>
         </div>
     )
 };

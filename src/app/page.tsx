@@ -4,25 +4,38 @@ import Card from '@/components/Cards';
 import { CountriesServices } from '@/services';
 import { useEffect, useContext } from 'react';
 import { CountryContext } from '@/context/CountryContext';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { countries, setCountries } = useContext(CountryContext);
+  const router = useRouter();
 
   useEffect(() => {
     const getCountries = async () => {
         const data = await CountriesServices.getAll();
-        const countriesData = data.slice(0,8);
+
+        function getRandomNumber(min:number, max:number):number {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        const randomNumber = getRandomNumber(1,242);
+        const countriesData = data.slice(randomNumber,Number(randomNumber)+8);
         setCountries(countriesData);
     };
-
     getCountries();
   }, []);
+
+  async function handleOnClick(countryName:string) {
+    const data = await CountriesServices.getByName(countryName);
+    const dataJSON = JSON.stringify(data);
+    localStorage.setItem('selectedCountryData', dataJSON);
+    router.push('/SpecificCountry');
+  }
 
   return (
     <div className='p-12 main-container bg-slate-800'>
      <SearchBar/>
      <div className='flex flex-wrap w-full gap-20 mt-16'> 
-      { countries.map((country,index)=> (
+      { countries.map((country,index) => (
           <Card
           key={index}
           flag={country.flags.png}
@@ -30,6 +43,7 @@ export default function Home() {
           region={country.region}
           population={country.population}
           capital={country.capital[0]}
+          handleOnClick={() => handleOnClick(country.name.common)}
           />
       ))}
      </div>
