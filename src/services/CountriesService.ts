@@ -5,16 +5,16 @@ const getAll = async () => {
         const response = await api.get('/all');
         return response.data;
     } catch (error) {
-        console.log(error)
+        return alert(error.message);
     }
 }
 
 const getByName = async (name:string) => {
     try {
       const response = await api.get(`/name/${name}`);
-      console.log(response.data);
+      return response.data;
     } catch (error) {
-      console.log(error);
+      alert(error.message)
     }
   }
 

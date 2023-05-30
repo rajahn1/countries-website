@@ -2,33 +2,27 @@
 import SearchBar from '@/components/SearchBar';
 import Card from '@/components/Cards';
 import { CountriesServices } from '@/services';
-import { CountriesDataI } from './interfaces/CountriesData';
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { CountryContext } from '@/context/CountryContext';
 
 export default function Home() {
-  const [countries, setCountries] = useState<CountriesDataI[]>([]);
+  const { countries, setCountries } = useContext(CountryContext);
 
   useEffect(() => {
     const getCountries = async () => {
-      try {
         const data = await CountriesServices.getAll();
         const countriesData = data.slice(0,8);
         setCountries(countriesData);
-      } catch (error) {
-        console.log(error);
-      }
     };
 
     getCountries();
   }, []);
 
-  console.log(countries);
-
   return (
     <div className='p-12 main-container bg-slate-800'>
      <SearchBar/>
      <div className='flex flex-wrap w-full gap-20 mt-16'> 
-      {countries.map((country,index)=> (
+      { countries.map((country,index)=> (
           <Card
           key={index}
           flag={country.flags.png}
@@ -39,7 +33,6 @@ export default function Home() {
           />
       ))}
      </div>
-
     </div>
   )
 };

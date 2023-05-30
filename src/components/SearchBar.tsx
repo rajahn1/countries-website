@@ -2,19 +2,22 @@
 import Image from "next/image";
 import SearchDark from '../../public/search-dark.png';
 import SearchLight from '../../public/search-white.png';
-import { useState } from "react";
+import { CountryContext } from "@/context/CountryContext";
+import { useContext, useEffect } from "react";
 import { CountriesServices } from "@/services";
 
 export default function SearchBar() {
-    const [country, setCountry] = useState('');
+    const {country, setCountry, setCountries} = useContext(CountryContext);
 
-    async function handleSearch() {
+    const handleSearch = async () => {
         if (!country) {
             alert('type a country name..')
             return;
         }
-        await CountriesServices.getByName(country)
-    }
+            const data = await CountriesServices.getByName(country);
+            if (!data) return alert('no country found');
+            setCountries(data);
+        }
 
     return(
         <div className='flex justify-between'>
@@ -28,12 +31,12 @@ export default function SearchBar() {
                 onClick={handleSearch}
                 />
                 <input type="text" placeholder='Search for a country...'
-                className='w-full h-full pl-12 text-white bg-slate-700 placeholder:text-white rounded-md shadow-lg'
+                className='w-full h-full pl-12 text-white bg-slate-700 placeholder:text-white rounded-md shadow-lg text-md'
                 onChange={e => setCountry(e.target.value)}
                 />
             </div>
-            <select className="bg-slate-700 text-white h-16 w-56 rounded-md outline-none text-lg p-4">
-                <option value="" selected disabled hidden> Filter by region </option>
+            <select defaultValue='filter' className="bg-slate-700 text-white h-16 w-56 rounded-md outline-none text-md p-4">
+                <option value='filter' disabled hidden> Filter by region </option>
                 <option> África </option>
                 <option> America </option>
                 <option> Asia </option>

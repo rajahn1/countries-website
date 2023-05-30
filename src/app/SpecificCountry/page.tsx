@@ -1,19 +1,24 @@
+'use client';
+
 export default function SpecificCountry() {
+    const dataJSON = localStorage.getItem('selectedCountryData');
+    const selectedCountryData = JSON.parse(dataJSON);
+
     return (
     <div>
         <button> back </button>
         <div>
             <div className="container-left">
-                flag
+                <img src={selectedCountryData[0].flags.png} alt="flag" />
             </div>
             <div className="container-right">
-                <h2>country title</h2>
+                <h2>{selectedCountryData[0].name.common}</h2>
                 <div>
                     <span>Native Name:</span>
-                    <span>Population:</span>
-                    <span>Region:</span>
-                    <span>Sub Region:</span>
-                    <span>Capital:</span>
+                    <span>{selectedCountryData[0].population}</span>
+                    <span>{selectedCountryData[0].region}</span>
+                    <span>{selectedCountryData[0].subregion}</span>
+                    <span>{selectedCountryData[0].capital}</span>
                 </div>
                 <div>
                     <span>Top Level Domain:</span>
