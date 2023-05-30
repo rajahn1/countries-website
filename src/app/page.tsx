@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className='p-12 main-container bg-slate-800'>
      <SearchBar/>
-     <div className='flex flex-wrap w-full gap-20 mt-10'> 
+     <div className='flex flex-wrap w-full gap-20 mt-16'> 
       {countries.map((country,index)=> (
           <Card
           key={index}

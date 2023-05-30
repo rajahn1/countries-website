@@ -4,7 +4,7 @@ import LightMode from '../../public/icons8-sun-50.png';
 
 export default function Header() {
     return(
-        <div className=" bg-slate-600 text-white flex justify-between h-16 items-center">
+        <div className=" bg-slate-700 text-white flex justify-between h-16 items-center">
             <h2 className="ml-6 text-xl font-bold"> Where in the world?</h2>
             <div className="mr-6 flex items-center">
                 <Image
