@@ -12,12 +12,11 @@ export default function SpecificCountry() {
 
     type stringObjectT = Record<string,string>;
     const borders:stringObjectT = selectedCountryData.borders;
-    const borderEntries = Object.entries(borders);
-    const limitedBorderEntries = borderEntries.length > 3 ? borderEntries.slice(0, 3) : borderEntries;
-
+    const borderEntries = borders && Object.entries(borders);
+    const limitedBorderEntries = borders && borderEntries.length > 3 ? borderEntries.slice(0, 3) : borderEntries;
     console.log(selectedCountryDataArray[0]);
     return (
-    <div className="w-screen text-white bg-slate-800 flex flex-row items-center justify-center">
+    <div className="w-screen text-white bg-slate-800 flex flex-row items-center justify-center h-screen">
         <div className="w-1/ flex flex-col gap-8">
         <Link href='/'>
         <button
@@ -45,15 +44,15 @@ export default function SpecificCountry() {
                         <span>Languaages:</span>
                         </div>
                     </div>               
-                <div className="flex gap-5">
+                <div className="flex gap-5 mt-12">
                     <span>Border Countries:</span>
-                    {limitedBorderEntries && limitedBorderEntries.map((border,index) =>(
+                    {limitedBorderEntries ? limitedBorderEntries.map((border,index) =>(
                         <button
                         key={index}
                         >
                         {border.slice(1, border.length)}
                         </button>
-                    ))}
+                    )): <span> this country has no borders</span>}
                 </div>
             </div>
         </div>

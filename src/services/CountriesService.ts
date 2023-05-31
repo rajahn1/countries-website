@@ -20,7 +20,7 @@ const getByName = async (name:string) => {
 
 const getByRegion = async (region:string) => {
   try {
-    const response = await api.get(`/region/${region}?fields=name,flags,capital,population,region`);
+    const response = await api.get(`/region/${region}`);
     return response.data;
   } catch (error) {
     alert(error.message);

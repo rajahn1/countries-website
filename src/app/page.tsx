@@ -2,13 +2,14 @@
 import SearchBar from '@/components/SearchBar';
 import Card from '@/components/Cards';
 import { CountriesServices } from '@/services';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { CountryContext } from '@/context/CountryContext';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { countries, setCountries } = useContext(CountryContext);
   const router = useRouter();
+  const [selectedOption, setSelectedOption] = useState('');
 
   useEffect(() => {
     const getCountries = async () => {
@@ -31,9 +32,29 @@ export default function Home() {
     router.push('/SpecificCountry');
   }
 
+  const handleOptionChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedOption(selectedValue);
+  }
+
+  useEffect(() => {
+    const filterRegion = async () => {
+      if (selectedOption !== '') {
+        const data = await CountriesServices.getByRegion(selectedOption);
+        console.log(data);
+        setCountries(data);
+      }
+    }
+
+    filterRegion();
+  },[selectedOption])
+
   return (
     <div className='p-12 main-container bg-slate-800'>
-     <SearchBar/>
+     <SearchBar
+     handleOptionChange={handleOptionChange}
+     selectedOption={selectedOption}
+     />
      <div className='flex flex-wrap w-full gap-20 mt-16'> 
       { countries.map((country,index) => (
           <Card
@@ -42,7 +63,7 @@ export default function Home() {
           name={country.name.common}
           region={country.region}
           population={country.population}
-          capital={country.capital[0]}
+          capital={country.capital ? country.capital[0] : 'no capital'}
           handleOnClick={() => handleOnClick(country.name.common)}
           />
       ))}

@@ -6,7 +6,7 @@ import { CountryContext } from "@/context/CountryContext";
 import { useContext, useEffect } from "react";
 import { CountriesServices } from "@/services";
 
-export default function SearchBar() {
+export default function SearchBar({selectedOption, handleOptionChange}) {
     const {country, setCountry, setCountries} = useContext(CountryContext);
 
     const handleSearchClick = async () => {
@@ -42,13 +42,15 @@ export default function SearchBar() {
                 onKeyDown={handleSearchEnter}
                 />
             </div>
-            <select defaultValue='filter' className="bg-slate-700 text-white h-16 w-56 rounded-md outline-none text-md p-4">
-                <option value='filter' disabled hidden> Filter by region </option>
-                <option> África </option>
-                <option> America </option>
-                <option> Asia </option>
-                <option> Europe </option>
-                <option> Oceania </option>
+            <select className="bg-slate-700 text-white h-16 w-56 rounded-md outline-none text-md p-4"
+            value={selectedOption}
+            onChange={handleOptionChange}>
+                <option value='' disabled hidden> Filter By Region </option>
+                <option value='africa'> África </option>
+                <option value='america'> America </option>
+                <option value='asia'> Asia </option>
+                <option value='europe'> Europe </option>
+                <option value='oceania'> Oceania </option>
             </select>
   
        </div>
