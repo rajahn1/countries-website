@@ -1,9 +1,10 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Nunito_Sans } from 'next/font/google'
 import Header from '@/components/Header'
 import CountryProvider from '@/context/CountryContext'
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito_Sans({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Rest countries',
@@ -17,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={nunito.className}>
         <CountryProvider>
           <Header />
             {children}

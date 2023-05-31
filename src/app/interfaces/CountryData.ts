@@ -8,5 +8,4 @@ export interface CountryDataI {
     toplevel:string,
     currencies: string,
     languages:string[],
-    
 }
