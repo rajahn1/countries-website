@@ -4,11 +4,14 @@ import { CountriesDataI } from "@/app/interfaces/CountriesData";
 
 export const CountryContext = createContext({});
 
-export default function CountryProvider({ children }:any){
+export default function CountryProvider({ children }:any) {
+
+    localStorage.setItem('theme', 'dark');
+
     const [country, setCountry] = useState<String>('');
     const [countries, setCountries] = useState<CountriesDataI[]>([]);
 
-    const values = { country, setCountry, countries, setCountries};
+    const values = { country, setCountry, countries, setCountries };
     return(
         <CountryContext.Provider value={values}> {children} </CountryContext.Provider>
     )
