@@ -1,7 +1,8 @@
 'use client';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FaArrowLeft } from 'react-icons/fa';
 export default function SpecificCountry() {
+    const router = useRouter();
     const dataJSON = localStorage.getItem('selectedCountryData');
     const selectedCountryDataArray = JSON.parse(dataJSON);
     const selectedCountryData = selectedCountryDataArray[0];
@@ -18,13 +19,12 @@ export default function SpecificCountry() {
     return (
     <div className="w-screen text-white bg-slate-800 flex flex-row items-center justify-center h-screen">
         <div className="w-1/ flex flex-col gap-8">
-        <Link href='/'>
         <button
-         className="bg-slate-500 text-white flex items-center mt-4 justify-center gap-2 w-5/12 h-8 ">
+        onClick={() => router.push('/')}
+        className="bg-slate-500 text-white flex items-center mt-4 justify-center gap-2 w-5/12 h-8 ">
             <FaArrowLeft />
             Back
          </button>
-         </Link>
                 <img src={selectedCountryData.flags.png} alt="flag" />
             </div>
 

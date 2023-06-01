@@ -8,8 +8,16 @@ import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { countries, setCountries } = useContext(CountryContext);
-  const router = useRouter();
   const [selectedOption, setSelectedOption] = useState('');
+
+  const [theme, setTheme] = useState('dark');
+
+  const handleChangeTheme = () => {
+    
+    setTheme(theme)
+  }
+
+  const router = useRouter();
 
   useEffect(() => {
     const getCountries = async () => {
