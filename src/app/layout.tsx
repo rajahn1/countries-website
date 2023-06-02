@@ -1,8 +1,8 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { Nunito_Sans } from 'next/font/google'
-import Header from '@/components/Header'
-import CountryProvider from '@/context/CountryContext'
+'use client';
+import './globals.css';
+import { Nunito_Sans } from 'next/font/google';
+import Header from '@/components/Header';
+import Providers from './Providers';
 
 const nunito = Nunito_Sans({ subsets: ['latin'] })
 
@@ -16,13 +16,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={nunito.className}>
-        <CountryProvider>
-          <Header />
-            {children}
-        </CountryProvider>
+          <Providers>
+            <Header />
+              {children}
+          </Providers>
         </body>
     </html>
   )

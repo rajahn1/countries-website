@@ -1,17 +1,12 @@
 'use client'
-import Link from "next/link";
 import { CountriesDataI } from "@/app/interfaces/CountriesData";
-import { useContext } from "react";
-import { CountryContext } from "@/context/CountryContext";
-import { CountriesServices } from "@/services";
 export default function Card ({flag, name, region, capital, population, handleOnClick}:CountriesDataI) {
-
+    
     const styling = {
         width: '21.66%',
     }
-
     return(
-        <div className="flex flex-col bg-slate-700 text-white shadow-xl hover:opacity-90 hover:cursor-pointer rounded-md" style={styling}
+        <div className="flex flex-col bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text shadow-xl hover:opacity-90 hover:cursor-pointer rounded-md" style={styling}
         onClick={handleOnClick}
         >
             <img

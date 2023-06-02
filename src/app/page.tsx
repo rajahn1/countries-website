@@ -51,7 +51,7 @@ export default function Home() {
   },[selectedOption])
 
   return (
-    <div className='p-12 main-container bg-slate-800'>
+    <div className='p-12 main-container bg-light-bg dark:bg-dark-bg'>
      <SearchBar
      handleOptionChange={handleOptionChange}
      selectedOption={selectedOption}

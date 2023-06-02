@@ -17,11 +17,11 @@ export default function SpecificCountry() {
     const limitedBorderEntries = borders && borderEntries.length > 3 ? borderEntries.slice(0, 3) : borderEntries;
     console.log(selectedCountryDataArray[0]);
     return (
-    <div className="w-screen text-white bg-slate-800 flex flex-row items-center justify-center h-screen">
+    <div className="w-screen text-light-text bg-light-bg dark:text-dark-text dark:bg-dark-bg flex flex-row items-center justify-center h-screen">
         <div className="w-1/ flex flex-col gap-8">
         <button
         onClick={() => router.push('/')}
-        className="bg-slate-500 text-white flex items-center mt-4 justify-center gap-2 w-5/12 h-8 ">
+        className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text shadow-md flex items-center mt-4 justify-center gap-2 w-5/12 h-8 ">
             <FaArrowLeft />
             Back
          </button>
