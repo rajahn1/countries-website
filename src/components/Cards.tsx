@@ -3,7 +3,7 @@ import { CountriesDataI } from "@/app/interfaces/CountriesData";
 export default function Card ({flag, name, region, capital, population, handleOnClick}:CountriesDataI) {
     
     const styling = {
-        width: '21.66%',
+        width: '19%',
     }
     return(
         <div className="flex flex-col bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text shadow-xl hover:opacity-90 hover:cursor-pointer rounded-md" style={styling}

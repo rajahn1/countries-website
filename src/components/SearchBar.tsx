@@ -72,7 +72,7 @@ export default function SearchBar({selectedOption, handleOptionChange}) {
                 onKeyDown={handleSearchEnter}
                 />
             </div>
-            <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-56 rounded-md outline-none text-md p-4"
+            <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-56 rounded-md outline-none shadow-lg text-md p-4"
             value={selectedOption}
             onChange={handleOptionChange}>
                 <option value='' disabled hidden> Filter By Region </option>

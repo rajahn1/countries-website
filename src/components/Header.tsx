@@ -26,7 +26,7 @@ export default function Header() {
         }
     };
     return(
-        <div className= "bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text flex justify-between h-24 items-center">
+        <div className= "bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text flex justify-between h-24 items-center shadow-lg">
             <h2 className="ml-24 text-2xl font-bold"> Where in the world?</h2>
             <div className="mr-6 flex items-center hover:cursor-pointer">
                 {renderThemeChanger()}
