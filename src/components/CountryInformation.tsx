@@ -1,14 +1,10 @@
-'use client'
+'use client';
 import { useRouter } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa";
-
 import formatNumber from "@/utils/FormatNumbers";
-
-export default function CountryInformation({ flag, countryName, nativeName, population, region, subregion, capital, area, currencies, languages, borders }) {
+import { Country } from "@/interfaces/CountryData";
+export default function CountryInformation({ flags, countryName, nativeName, population, region, subregion, capital, area, currencies, languages, borders }:Country) {
     const router = useRouter();
-    const natimeNameValues = Object.values(nativeName);
-    const currenciesValues = Object.values(currencies);
-    const languagesValues = Object.values(languages);
     return (
         <div className="flex flex-row text-sm gap-16 items-center">
             <div className="flex flex-col gap-8 container-left">
@@ -18,14 +14,14 @@ export default function CountryInformation({ flag, countryName, nativeName, popu
                 <FaArrowLeft />
                     Back
                 </button>
-                <img src={flag} alt="flag" className="border-2 border-slate-200 shadow-md" />
+                <img src={flags} alt="flag" className="border-2 border-slate-200 shadow-md" />
             </div>
             <div className="flex flex-row gap-10 container-right pt-16">
                 <div className="flex flex-col gap-2">
                     <h2 className="text-3xl font-bold">
                         {countryName}
                     </h2>
-                    <span>Native Name: {natimeNameValues[0].common}
+                    <span>Native Name: {nativeName.common}
                     </span>
                     <span> Population: {formatNumber(population)}</span>
                     <span> Region: {region}</span>
@@ -40,10 +36,10 @@ export default function CountryInformation({ flag, countryName, nativeName, popu
                 </div>
                 <div className="flex flex-col gap-2 pt-10">
                     <span> Area: {formatNumber(area)} km²</span>
-                    <span> Currencies: {currenciesValues.map((item, index) => (
+                    <span> Currencies: {currencies.map((item:string, index:number) => (
                         <span key={index}>{item.name}, symbol: {item.symbol}</span>
                     ))} </span>
-                    <span> Languages: {languagesValues.map((item,index) => (
+                    <span> Languages: {languages.map((item,index) => (
                         <span key={index}> {item} </span>
                     ))} </span>
                 </div>

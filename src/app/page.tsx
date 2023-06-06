@@ -5,9 +5,11 @@ import { CountriesServices } from '@/services';
 import { useEffect, useContext, useState } from 'react';
 import { CountryContext } from '@/context/CountryContext';
 import { useRouter } from 'next/navigation';
+import { Countries } from '@/interfaces/CountriesData';
 
 export default function Home() {
   const { countries, setCountries } = useContext(CountryContext);
+  
   const [selectedOption, setSelectedOption] = useState('');
   
   const router = useRouter();
@@ -49,7 +51,7 @@ export default function Home() {
 
     filterRegion();
   },[selectedOption])
-
+  console.log(countries);
   return (
     <div className='p-12 main-container bg-light-bg dark:bg-dark-bg'>
      <SearchBar
@@ -57,10 +59,10 @@ export default function Home() {
      selectedOption={selectedOption}
      />
      <div className='flex flex-wrap w-full gap-20 mt-16'> 
-      { countries.map((country,index) => (
+      { countries.map((country:Countries ,index:number) => (
           <Card
           key={index}
-          flag={country.flags.png}
+          flags={country.flags.png}
           name={country.name.common}
           region={country.region}
           population={country.population}

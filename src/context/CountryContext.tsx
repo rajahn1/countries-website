@@ -1,17 +1,17 @@
 'use client';
 import { createContext, useState} from "react";
-import { CountriesDataI } from "@/interfaces/CountriesData";
+import { Countries } from "@/interfaces/CountriesData";
 
 export const CountryContext = createContext({
     country: '',
     setCountry: (value: string) => {},
     countries: [],
-    setCountries: (value: CountriesDataI[]) => {}
+    setCountries: (value: Countries[]) => {}
 });
 
 export default function CountryProvider({ children }:any) {
     const [country, setCountry] = useState<String>('');
-    const [countries, setCountries] = useState<CountriesDataI[]>([]);
+    const [countries, setCountries] = useState<Countries[]>([]);
 
     const values = { country, setCountry, countries, setCountries };
     return(
