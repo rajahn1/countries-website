@@ -1,5 +1,5 @@
 'use client'
-import { CountriesDataI } from "@/app/interfaces/CountriesData";
+import { CountriesDataI } from "@/interfaces/CountriesData";
 import formatNumber from "@/utils/FormatNumbers";
 export default function Card ({flag, name, region, capital, population, handleOnClick}:CountriesDataI) {
     

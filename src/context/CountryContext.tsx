@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useState} from "react";
-import { CountriesDataI } from "@/app/interfaces/CountriesData";
+import { CountriesDataI } from "@/interfaces/CountriesData";
 
 export const CountryContext = createContext({
     country: '',
