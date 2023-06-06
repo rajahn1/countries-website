@@ -44,14 +44,12 @@ export default function Home() {
     const filterRegion = async () => {
       if (selectedOption !== '') {
         const data = await CountriesServices.getByRegion(selectedOption);
-        console.log(data);
         setCountries(data);
       }
     }
-
     filterRegion();
   },[selectedOption])
-  console.log(countries);
+  
   return (
     <div className='p-12 main-container bg-light-bg dark:bg-dark-bg'>
      <SearchBar
