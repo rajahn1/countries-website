@@ -1,4 +1,3 @@
-'use client';
 import './globals.css';
 import { Nunito_Sans } from 'next/font/google';
 import Header from '@/components/Header';
