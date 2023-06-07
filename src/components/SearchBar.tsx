@@ -6,14 +6,13 @@ import { CountryContext } from "@/context/CountryContext";
 import { useContext, useEffect, useState } from "react";
 import { CountriesServices } from "@/services";
 import { useTheme } from 'next-themes';
-import { CheckContext } from "@/utils/CheckContext";
 
 export default function SearchBar({selectedOption, handleOptionChange}:any) {
     const context = useContext(CountryContext);
     if (!context) {
-    alert('error');
-    return null;
-}    
+        alert('error');
+        return null;
+    }    
     const {country, setCountry, setCountries} = context;
 
     const handleSearchClick = async () => {
