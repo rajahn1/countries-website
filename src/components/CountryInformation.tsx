@@ -28,33 +28,33 @@ export default function CountryInformation({ flags, name, population, region, su
                     <span> Region: {region}</span>
                     <span> Sub Region: {subregion}</span>
                     <span> Capital: {capital}</span>
-                    <div className="flex justify-center items-center gap-2">
-                        <span> Border Countries: </span>
+                    <div className="flex items-center gap-2">
+                        Border Countries:
                         {borders ? (
-                            <>
+                            <div>
                             {borders.slice(0,3).map((border,index) => (
                                 <button key={index} className="shadow-md w-12 ">{border}</button> 
                             ))}
-                        </>
+                            </div>
                         ): 'no borders'}
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 pt-10">
                     <span> Area: {formatNumber(area)} km²</span>
-                        <span> Currencies:
+                        <div className="flex gap-2"> Currencies:
                         {currencies ? Object.entries(currencies).map(([key, currency]) => (
                             <span 
                             key={key}>Name: {currency.name}, Symbol: {currency.symbol}
                             </span>
                         )): <span> no currency </span>}
-                    </span>	
-                    <span> Languages:  
+                    </div>	
+                    <div className="flex gap-2"> Languages:  
                         {languages ? Object.entries(languages).map(([key,language]) => (
                             <span key={key}> 
                                 {language} 
                             </span>
                         )): <span> No languages </span>} 
-                    </span>
+                    </div>
                 </div>
             </div>
         </div>
