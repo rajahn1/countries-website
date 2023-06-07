@@ -5,12 +5,12 @@ import { CountriesServices } from '@/services';
 import { useEffect, useContext, useState } from 'react';
 import { CountryContext } from '@/context/CountryContext';
 import { useRouter } from 'next/navigation';
-import { CountryI, HomeCountries } from '@/interfaces/CountryData';
+import { HomeCountries } from '@/interfaces/CountryData';
 import { useLocalStorage } from 'react-use';
 
 export default function Home() {
   const [value, setValue, remove] = useLocalStorage('country-data');
-  
+
   const context = useContext(CountryContext);
   if (!context) {
       alert('error');
@@ -33,7 +33,7 @@ export default function Home() {
         setCountries(countriesData);
     };
     getCountries();
-  }, []);
+  },[]);
 
   async function handleOnClick(countryName:string) {
     const data = await CountriesServices.getByName(countryName);

@@ -18,7 +18,7 @@ export default function Card ({flags, name, region, capital, population, handleO
                 <span className="mb-4 text-xl font-bold"> {name.common} </span>
                 <span> Population: {formatNumber(population)}</span>
                 <span> Region: {region} </span>
-                <span> Capital: {Object.values(capital)[0]}</span>
+                <span> Capital: {capital ? Object.values(capital)[0]: 'no capital'} </span>
             </div>
         </div>
     )

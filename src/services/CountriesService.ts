@@ -1,4 +1,5 @@
 import { api } from "@/providers/Api";
+
 const getAll = async () => {
     try {
         const response = await api.get('/all?fields=name,flags,capital,population,region');
