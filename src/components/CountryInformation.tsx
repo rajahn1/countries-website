@@ -4,6 +4,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import formatNumber from "@/utils/FormatNumbers";
 import { CountryI } from "@/interfaces/CountryData";
 export default function CountryInformation({ flags, name, population, region, subregion, capital, area, currencies, languages, borders }: CountryI) {
+    console.log(currencies);
     const router = useRouter();
     return (
         <div className="flex flex-row text-sm gap-16 items-center">
@@ -41,18 +42,18 @@ export default function CountryInformation({ flags, name, population, region, su
                 <div className="flex flex-col gap-2 pt-10">
                     <span> Area: {formatNumber(area)} km²</span>
                         <span> Currencies:
-                        {Object.entries(currencies).map(([key, currency]) => (
+                        {currencies ? Object.entries(currencies).map(([key, currency]) => (
                             <span 
                             key={key}>Name: {currency.name}, Symbol: {currency.symbol}
                             </span>
-                        ))}
+                        )): <span> no currency </span>}
                     </span>	
-                    <span> Languages: 
-                        {Object.entries(languages).map(([key,language]) => (
+                    <span> Languages:  
+                        {languages ? Object.entries(languages).map(([key,language]) => (
                             <span key={key}> 
                                 {language} 
                             </span>
-                        ))} 
+                        )): <span> No languages </span>} 
                     </span>
                 </div>
             </div>
