@@ -1,8 +1,7 @@
 'use client'
-import { Countries } from "@/interfaces/CountriesData";
+import { CardProps } from "@/interfaces/CountriesData";
 import formatNumber from "@/utils/FormatNumbers";
-export default function Card ({flags, name, region, capital, population, handleOnClick}:Countries) {
-    
+export default function Card ({flags, name, region, capital, population, handleOnClick}:CardProps) {
     const styling = {
         width: '19%',
     }
@@ -12,14 +11,14 @@ export default function Card ({flags, name, region, capital, population, handleO
         >
             <img
             className="h-36 border-2 dark:border-slate-300 border-slate-600"
-            src={flags}
+            src={flags.png}
             alt='flag'
             />
             <div className="p-6 flex flex-col text-sm">
-                <span className="mb-4 text-xl font-bold"> {name} </span>
+                <span className="mb-4 text-xl font-bold"> {name.common} </span>
                 <span> Population: {formatNumber(population)}</span>
                 <span> Region: {region} </span>
-                <span> Capital: {capital}</span>
+                <span> Capital: {Object.values(capital)[0]}</span>
             </div>
         </div>
     )

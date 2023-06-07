@@ -6,9 +6,15 @@ import { CountryContext } from "@/context/CountryContext";
 import { useContext, useEffect, useState } from "react";
 import { CountriesServices } from "@/services";
 import { useTheme } from 'next-themes';
+import { CheckContext } from "@/utils/CheckContext";
 
-export default function SearchBar({selectedOption, handleOptionChange}) {
-    const {country, setCountry, setCountries} = useContext(CountryContext);
+export default function SearchBar({selectedOption, handleOptionChange}:any) {
+    const context = useContext(CountryContext);
+    if (!context) {
+    alert('error');
+    return null;
+}    
+    const {country, setCountry, setCountries} = context;
 
     const handleSearchClick = async () => {
         if (!country) {
@@ -19,7 +25,7 @@ export default function SearchBar({selectedOption, handleOptionChange}) {
         if (!data) return alert('no country found');
         setCountries(data);
     }
-    const handleSearchEnter = async (event) => {
+    const handleSearchEnter = async (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key !== "Enter") return; 
         const data = await CountriesServices.getByName(country);
         if (!data) return alert('no country found');

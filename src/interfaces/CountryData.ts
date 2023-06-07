@@ -1,4 +1,4 @@
-export interface Country {
+export interface CountryI {
     name:         Name;
     currencies:   Currencies;
     capital:      string[];
@@ -32,7 +32,8 @@ export interface Name {
 }
 
 export interface NativeName {
-    [key:string]: Translation;
+   official: string,
+   common: string;
 }
 export interface Translation {
     official: string;

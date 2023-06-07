@@ -2,8 +2,8 @@
 import { useRouter } from "next/navigation";
 import { FaArrowLeft } from "react-icons/fa";
 import formatNumber from "@/utils/FormatNumbers";
-import { Country } from "@/interfaces/CountryData";
-export default function CountryInformation({ flags, countryName, nativeName, population, region, subregion, capital, area, currencies, languages, borders }:Country) {
+import { CountryI } from "@/interfaces/CountryData";
+export default function CountryInformation({ flags, name, population, region, subregion, capital, area, currencies, languages, borders }: CountryI) {
     const router = useRouter();
     return (
         <div className="flex flex-row text-sm gap-16 items-center">
@@ -14,14 +14,14 @@ export default function CountryInformation({ flags, countryName, nativeName, pop
                 <FaArrowLeft />
                     Back
                 </button>
-                <img src={flags} alt="flag" className="border-2 border-slate-200 shadow-md" />
+                <img src={flags.png} alt="flag" className="border-2 border-slate-200 shadow-md" />
             </div>
             <div className="flex flex-row gap-10 container-right pt-16">
                 <div className="flex flex-col gap-2">
                     <h2 className="text-3xl font-bold">
-                        {countryName}
+                        {name.common}
                     </h2>
-                    <span>Native Name: {nativeName.common}
+                    <span>Native Name: {Object.values(name.nativeName)[0].common}
                     </span>
                     <span> Population: {formatNumber(population)}</span>
                     <span> Region: {region}</span>
@@ -29,19 +29,27 @@ export default function CountryInformation({ flags, countryName, nativeName, pop
                     <span> Capital: {capital}</span>
                     <div className="flex justify-center items-center gap-2">
                         <span> Border Countries: </span>
-                        {borders ? borders.map(border => (
-                            <button className="shadow-md w-12 ">{border} </button>
+                        {borders ? borders.map((border,index) => (
+                            <button key={index} className="shadow-md w-12 ">{border}</button>
                         )): 'no borders'}
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 pt-10">
                     <span> Area: {formatNumber(area)} km²</span>
-                    <span> Currencies: {currencies.map((item:string, index:number) => (
-                        <span key={index}>{item.name}, symbol: {item.symbol}</span>
-                    ))} </span>
-                    <span> Languages: {languages.map((item,index) => (
-                        <span key={index}> {item} </span>
-                    ))} </span>
+                        <span> Currencies:
+                        {Object.entries(currencies).map(([key, currency]) => (
+                            <span 
+                            key={key}>Name: {currency.name}, Symbol: {currency.symbol}
+                            </span>
+                        ))}
+                    </span>	
+                    <span> Languages: 
+                        {Object.entries(languages).map(([key,language]) => (
+                            <span key={key}> 
+                                {language} 
+                            </span>
+                        ))} 
+                    </span>
                 </div>
             </div>
         </div>

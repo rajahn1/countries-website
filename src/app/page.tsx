@@ -5,11 +5,15 @@ import { CountriesServices } from '@/services';
 import { useEffect, useContext, useState } from 'react';
 import { CountryContext } from '@/context/CountryContext';
 import { useRouter } from 'next/navigation';
-import { Countries } from '@/interfaces/CountriesData';
+import { CountriesI } from '@/interfaces/CountriesData';
 
 export default function Home() {
-  const { countries, setCountries } = useContext(CountryContext);
-  
+  const context = useContext(CountryContext);
+  if (!context) {
+      alert('error');
+      return null;
+  }    
+  const { countries, setCountries } = context;
   const [selectedOption, setSelectedOption] = useState('');
   
   const router = useRouter();
@@ -35,7 +39,7 @@ export default function Home() {
     router.push('/SpecificCountry');
   }
 
-  const handleOptionChange = (e) => {
+  const handleOptionChange = (e:any):void => {
     const selectedValue = e.target.value;
     setSelectedOption(selectedValue);
   }
@@ -57,14 +61,14 @@ export default function Home() {
      selectedOption={selectedOption}
      />
      <div className='flex flex-wrap w-full gap-20 mt-16'> 
-      { countries.map((country:Countries ,index:number) => (
+      { countries.map((country:CountriesI ,index:number) => (
           <Card
           key={index}
-          flags={country.flags.png}
-          name={country.name.common}
+          flags={country.flags}
+          name={country.name}
           region={country.region}
           population={country.population}
-          capital={country.capital ? country.capital[0] : 'no capital'}
+          capital={country.capital}
           handleOnClick={() => handleOnClick(country.name.common)}
           />
       ))}
