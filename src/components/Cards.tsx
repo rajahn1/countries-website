@@ -1,5 +1,5 @@
 'use client'
-import { CardProps } from "@/interfaces/CountriesData";
+import { CardProps } from "@/interfaces/CountryData";
 import formatNumber from "@/utils/FormatNumbers";
 export default function Card ({flags, name, region, capital, population, handleOnClick}:CardProps) {
     const styling = {

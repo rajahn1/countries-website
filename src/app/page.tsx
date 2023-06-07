@@ -5,15 +5,18 @@ import { CountriesServices } from '@/services';
 import { useEffect, useContext, useState } from 'react';
 import { CountryContext } from '@/context/CountryContext';
 import { useRouter } from 'next/navigation';
-import { CountriesI } from '@/interfaces/CountriesData';
+import { CountryI, HomeCountries } from '@/interfaces/CountryData';
+import { useLocalStorage } from 'react-use';
 
 export default function Home() {
+  const [value, setValue, remove] = useLocalStorage('country-data');
+  
   const context = useContext(CountryContext);
   if (!context) {
       alert('error');
       return null;
   }    
-  const { countries, setCountries } = context;
+  const { countries, setCountries} = context;
   const [selectedOption, setSelectedOption] = useState('');
   
   const router = useRouter();
@@ -34,8 +37,7 @@ export default function Home() {
 
   async function handleOnClick(countryName:string) {
     const data = await CountriesServices.getByName(countryName);
-    const dataJSON = JSON.stringify(data);
-    localStorage.setItem('selectedCountryData', dataJSON);
+    setValue(data);
     router.push('/SpecificCountry');
   }
 
@@ -61,7 +63,7 @@ export default function Home() {
      selectedOption={selectedOption}
      />
      <div className='flex flex-wrap w-full gap-20 mt-16'> 
-      { countries.map((country:CountriesI ,index:number) => (
+      { countries.map((country:HomeCountries ,index:number) => (
           <Card
           key={index}
           flags={country.flags}

@@ -10,6 +10,14 @@ export interface CountryI {
     flags:        Flags;
     borders:      string[];
 };
+
+export interface HomeCountries {
+    name:         Name;   
+    population:   number; 
+    flags:        Flags;
+    capital:      string[];
+    region:       string;
+}
 export interface Currencies {
     [key:string]: Currencie;
 }
@@ -38,4 +46,20 @@ export interface NativeName {
 export interface Translation {
     official: string;
     common:   string;
+}
+
+export interface CountryContextProps {
+    country: string;
+    setCountry: (value: string) => void;
+    countries: HomeCountries[];
+    setCountries: (value: HomeCountries[]) => void;
+  }
+  export interface CardProps extends HomeCountries {
+    handleOnClick: () => void;
+  }
+
+  export interface APIError {
+    message: string;
+    code: number;
+    status: string;
 }
