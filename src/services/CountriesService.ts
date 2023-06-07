@@ -5,7 +5,7 @@ const getAll = async () => {
         const response = await api.get('/all?fields=name,flags,capital,population,region');
         return response.data;
     } catch (error:any) {
-        return alert(error.message);
+        console.log(error.message);
     }
 }
 
@@ -14,7 +14,7 @@ const getByName = async (name:string) => {
       const response = await api.get(`/name/${name}`);
       return response.data;
     } catch (error:any) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 
@@ -23,7 +23,7 @@ const getByRegion = async (region:string) => {
     const response = await api.get(`/region/${region}`);
     return response.data;
   } catch (error:any) {
-    alert(error.message);
+    console.log(error.message);
   }
 }
 
