@@ -79,16 +79,13 @@ export default function SearchBar({selectedOption, handleOptionChange}:any) {
                 onChange={e => setCountry(e.target.value)}
                 onKeyDown={handleSearchEnter}
                 /> 
-            </div>
-            <div className="w-6/12 flex items-center">
+            </div> 
                 {showError &&
-                <>
+                 <div className="w-6/12 flex items-center">
                     <span className="text-xl text-red-500"> Please type a valid country </span>
-                   <FaExclamation color="red"/> 
-                </>
+                    <FaExclamation color="red"/> 
+                </div>
                 }
-            </div>
-
             <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-2/12 rounded-md outline-none shadow-lg text-md p-4"
             value={selectedOption}
             onChange={handleOptionChange}>
