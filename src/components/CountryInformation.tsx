@@ -43,7 +43,7 @@ export default function CountryInformation({ flags, name, population, region, su
                         <div className="flex gap-2"> Currencies:
                         {currencies ? Object.entries(currencies).map(([key, currency]) => (
                             <span 
-                            key={key}>Name: {currency.name}, Symbol: {currency.symbol}
+                            key={key}>{currency.name}, {currency.symbol}
                             </span>
                         )): <span> no currency </span>}
                     </div>	
