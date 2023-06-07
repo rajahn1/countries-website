@@ -29,9 +29,13 @@ export default function CountryInformation({ flags, name, population, region, su
                     <span> Capital: {capital}</span>
                     <div className="flex justify-center items-center gap-2">
                         <span> Border Countries: </span>
-                        {borders ? borders.map((border,index) => (
-                            <button key={index} className="shadow-md w-12 ">{border}</button>
-                        )): 'no borders'}
+                        {borders ? (
+                            <>
+                            {borders.slice(0,3).map((border,index) => (
+                                <button key={index} className="shadow-md w-12 ">{border}</button> 
+                            ))}
+                        </>
+                        ): 'no borders'}
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 pt-10">
