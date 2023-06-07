@@ -4,7 +4,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import formatNumber from "@/utils/FormatNumbers";
 import { CountryI } from "@/interfaces/CountryData";
 export default function CountryInformation({ flags, name, population, region, subregion, capital, area, currencies, languages, borders }: CountryI) {
-    console.log(currencies);
     const router = useRouter();
     return (
         <div className="flex flex-row text-sm gap-16 items-center">
