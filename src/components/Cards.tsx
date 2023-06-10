@@ -1,12 +1,11 @@
 'use client'
 import { CardProps } from "@/interfaces/CountryData";
 import formatNumber from "@/utils/FormatNumbers";
+
 export default function Card ({flags, name, region, capital, population, handleOnClick}:CardProps) {
-    const styling = {
-        width: '19%',
-    }
+   
     return(
-        <div className="flex flex-col bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text shadow-xl hover:opacity-90 hover:cursor-pointer rounded-md" style={styling}
+        <div className="flex flex-col justify-end items-center w-8/12 md:w-1/6 bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text shadow-xl hover:opacity-90 hover:cursor-pointer rounded-md"
         onClick={handleOnClick}
         >
             <img

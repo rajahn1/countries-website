@@ -62,7 +62,7 @@ export default function Home() {
      handleOptionChange={handleOptionChange}
      selectedOption={selectedOption}
      />
-     <div className='flex flex-wrap w-full gap-20 mt-16'> 
+     <div className='flex flex-col justify-center items-center md:flex-row flex-wrap w-full gap-20 mt-16'> 
       { countries.map((country:HomeCountries ,index:number) => (
           <Card
           key={index}

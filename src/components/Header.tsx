@@ -8,7 +8,7 @@ export default function Header() {
     const {systemTheme, theme, setTheme} = useTheme();
     const [mounted, setMounted] = useState(false);
     const router = useRouter();
-    
+
     useEffect(() => {
         setMounted(true);
     },[]);
@@ -18,12 +18,12 @@ export default function Header() {
         const currentTheme = theme === 'system' ? systemTheme : theme;
         if (currentTheme === 'dark') {
             return (
-            <FaSun className="w-6" size="2xs" role="button" onClick={() => setTheme('light')} />
+            <FaSun className="w-6" size="sm" role="button" onClick={() => setTheme('light')} />
             );
         }
         else {
             return(
-                <FaMoon className="w-6" size="2xs" role="button" onClick={() => setTheme('dark')} />
+                <FaMoon className="w-6" size="sm" role="button" onClick={() => setTheme('dark')} />
             );
         }
     };
