@@ -73,10 +73,10 @@ export default function SearchBar({selectedOption, handleOptionChange}:any) {
 
     return(
         <div className='flex flex-col gap-3 md:flex-row justify-between items-center'>
-            <div className="flex h-16 w-6/12 md:w-4/12 mr-5 gap-3 items-center">
+            <div className="flex h-16 w-10/12 md:w-4/12 mr-5 gap-3 items-center">
                 {renderThemeChanger()}
                 <input type="text" placeholder='Search for a country...'
-                className='w-full h-full pl-12 text-light-text bg-light-elements placeholder:text-light-input dark:text-dark-text dark:bg-dark-elements dark:placeholder:text-dark-text rounded-md shadow-lg text-md'
+                className='w-full h-full pl-12 text-light-text bg-light-elements placeholder:text-light-input dark:text-dark-text dark:bg-dark-elements dark:placeholder:text-dark-text rounded-md shadow-lg text-sm md:text-md'
                 onChange={e => setCountry(e.target.value)}
                 onKeyDown={handleSearchEnter}
                 /> 
@@ -87,7 +87,7 @@ export default function SearchBar({selectedOption, handleOptionChange}:any) {
                     <FaExclamation color="red"/> 
                 </div>
                 }
-            <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-4/12 md:w-2/12 rounded-md outline-none shadow-lg text-md p-4"
+            <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-10/12 md:w-2/12 rounded-md outline-none shadow-lg text-md p-4"
             value={selectedOption}
             onChange={handleOptionChange}>
                 <option value='' disabled hidden> Filter By Region </option>
