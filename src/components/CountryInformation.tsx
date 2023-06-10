@@ -6,7 +6,7 @@ import { CountryI } from "@/interfaces/CountryData";
 export default function CountryInformation({ flags, name, population, region, subregion, capital, area, currencies, languages, borders }: CountryI) {
     const router = useRouter();
     return (
-        <div className="flex flex-row text-sm gap-16 items-center">
+        <div className="flex flex-col justify-center md:flex-row text-sm gap-16 items-center">
             <div className="flex flex-col gap-8 container-left">
                 <button
                 onClick={() => router.push('/')}
@@ -21,7 +21,7 @@ export default function CountryInformation({ flags, name, population, region, su
                     <h2 className="text-3xl font-bold">
                         {name.common}
                     </h2>
-                    <span>Native Name: {Object.values(name.nativeName)[0].common}
+                    <span>Native Name: {name.nativeName ? Object.values(name.nativeName)[0].common : 'no name'}
                     </span>
                     <span> Population: {formatNumber(population)}</span>
                     <span> Region: {region}</span>
