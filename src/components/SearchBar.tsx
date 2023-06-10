@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { CountriesServices } from "@/services";
 import { useTheme } from 'next-themes';
 import { FaExclamation } from "react-icons/fa";
+import { count } from "console";
 
 export default function SearchBar({selectedOption, handleOptionChange}:any) {
     const context = useContext(CountryContext);
