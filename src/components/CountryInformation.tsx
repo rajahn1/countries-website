@@ -6,7 +6,7 @@ import { CountryI } from "@/interfaces/CountryData";
 export default function CountryInformation({ flags, name, population, region, subregion, capital, area, currencies, languages, borders }: CountryI) {
     const router = useRouter();
     return (
-        <div className="flex flex-col justify-center md:flex-row text-sm gap-16 items-center">
+        <div className="flex flex-col justify-center md:flex-row text-xs md:gap-16 items-center">
             <div className="flex flex-col gap-8 container-left">
                 <button
                 onClick={() => router.push('/')}
@@ -41,14 +41,14 @@ export default function CountryInformation({ flags, name, population, region, su
                 <div className="flex flex-col gap-2 pt-10">
                     <span> Area: {formatNumber(area)} km²</span>
                         <div className="flex gap-2"> Currencies:
-                        {currencies ? Object.entries(currencies).map(([key, currency]) => (
+                        {currencies ? Object.entries(currencies).slice(0,3).map(([key, currency]) => (
                             <span 
                             key={key}>{currency.name}, {currency.symbol}
                             </span>
                         )): <span> no currency </span>}
                     </div>	
                     <div className="flex gap-2"> Languages:  
-                        {languages ? Object.entries(languages).map(([key,language]) => (
+                        {languages ? Object.entries(languages).slice(0,3).map(([key,language]) => (
                             <span key={key}> 
                                 {language} 
                             </span>

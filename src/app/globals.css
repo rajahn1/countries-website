@@ -9,3 +9,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.light {
+  --bg: #FAFAFA;
+}
+
+.dark {
+  --bg: #202C37;
+}
+
+body {
+  background-color: var(--bg);
+}
+
