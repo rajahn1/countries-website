@@ -9,9 +9,9 @@ export default function CountryInformation({ flags, name, population, region, su
         <div className="flex flex-col justify-center md:flex-row text-xs md:gap-16 items-center">
             <div className="flex flex-col gap-8 container-left">
                 <button
-                onClick={() => router.push('/')}
-                className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text shadow-md flex items-center mt-4 justify-center gap-2 w-32 h-8 ">
-                <FaArrowLeft />
+                    onClick={() => router.push('/')}
+                    className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text shadow-md flex items-center mt-4 justify-center gap-2 w-32 h-8 ">
+                    <FaArrowLeft />
                     Back
                 </button>
                 <img src={flags.png} alt="flag" className="border-2 border-slate-200 shadow-md" />
@@ -31,31 +31,33 @@ export default function CountryInformation({ flags, name, population, region, su
                         Border Countries:
                         {borders ? (
                             <div>
-                            {borders.slice(0,3).map((border,index) => (
-                                <button key={index} className="shadow-md w-12 ">{border}</button> 
-                            ))}
+                                {/* o borders ja vir formatado, formatar o data na handleOnClick */}
+                                {borders.slice(0, 3).map((border, index) => (
+                                    // evitar o uso do index
+                                    <button key={index} className="shadow-md w-12 ">{border}</button>
+                                ))}
                             </div>
-                        ): 'no borders'}
+                        ) : 'no borders'}
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 pt-10">
                     <span> Area: {formatNumber(area)} km²</span>
-                        <div className="flex gap-2"> Currencies:
-                        {currencies ? Object.entries(currencies).slice(0,3).map(([key, currency]) => (
-                            <span 
-                            key={key}>{currency.name}, {currency.symbol}
+                    <div className="flex gap-2"> Currencies:
+                        {currencies ? Object.entries(currencies).slice(0, 3).map(([key, currency]) => (
+                            <span
+                                key={key}>{currency.name}, {currency.symbol}
                             </span>
-                        )): <span> no currency </span>}
-                    </div>	
-                    <div className="flex gap-2"> Languages:  
-                        {languages ? Object.entries(languages).slice(0,3).map(([key,language]) => (
-                            <span key={key}> 
-                                {language} 
+                        )) : <span> no currency </span>}
+                    </div>
+                    <div className="flex gap-2"> Languages:
+                        {languages ? Object.entries(languages).slice(0, 3).map(([key, language]) => (
+                            <span key={key}>
+                                {language}
                             </span>
-                        )): <span> No languages </span>} 
+                        )) : <span> No languages </span>}
                     </div>
                 </div>
             </div>
         </div>
-    )    
+    )
 }

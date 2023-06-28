@@ -2,79 +2,80 @@
 import SearchBar from '@/components/SearchBar';
 import Card from '@/components/Cards';
 import { CountriesServices } from '@/services';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, ChangeEvent } from 'react';
 import { CountryContext } from '@/context/CountryContext';
 import { useRouter } from 'next/navigation';
 import { HomeCountries } from '@/interfaces/CountryData';
 import { useLocalStorage } from 'react-use';
 
 export default function Home() {
-  const [value, setValue, remove] = useLocalStorage('country-data');
+  const [, setValue,] = useLocalStorage('country-data');
 
   const context = useContext(CountryContext);
   if (!context) {
-      alert('error');
-      return null;
-  }    
-  const { countries, setCountries} = context;
-  const [selectedOption, setSelectedOption] = useState('');
-  
+    alert('error');
+    return null;
+  }
+  const { countries, setCountries } = context;
+  const [selectedOption, setSelectedOption] = useState<string>('');
+
   const router = useRouter();
 
+  function getRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  const getCountries = async () => {
+    const data = await CountriesServices.getAll();
+    const randomNumber = getRandomNumber(1, 242);
+    const countriesData = data.slice(randomNumber, Number(randomNumber) + 8);
+    setCountries(countriesData);
+  };
+
   useEffect(() => {
-    const getCountries = async () => {
-        const data = await CountriesServices.getAll();
-
-        function getRandomNumber(min:number, max:number):number {
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-        const randomNumber = getRandomNumber(1,242);
-        const countriesData = data.slice(randomNumber,Number(randomNumber)+8);
-        setCountries(countriesData);
-    };
     getCountries();
-  },[]);
+  }, []);
 
-  async function handleOnClick(countryName:string) {
+  async function handleOnClick(countryName: string) {
     const data = await CountriesServices.getByName(countryName);
     setValue(data);
     router.push('/SpecificCountry');
   }
 
-  const handleOptionChange = (e:any):void => {
+  const handleOptionChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     const selectedValue = e.target.value;
     setSelectedOption(selectedValue);
   }
 
-  useEffect(() => {
-    const filterRegion = async () => {
-      if (selectedOption !== '') {
-        const data = await CountriesServices.getByRegion(selectedOption);
-        setCountries(data);
-      }
+  const filterRegion = async () => {
+    if (selectedOption.length) {
+      const data = await CountriesServices.getByRegion(selectedOption);
+      setCountries(data);
     }
+  }
+  useEffect(() => {
     filterRegion();
-  },[selectedOption])
-  
+  }, [selectedOption])
+
   return (
     <div className='p-12 main-container bg-light-bg dark:bg-dark-bg'>
-     <SearchBar
-     handleOptionChange={handleOptionChange}
-     selectedOption={selectedOption}
-     />
-     <div className='flex flex-col justify-center md:flex-row flex-wrap w-full gap-32 mt-16'> 
-      { countries.map((country:HomeCountries ,index:number) => (
+      <SearchBar
+        handleOptionChange={handleOptionChange}
+        selectedOption={selectedOption} filterRegion
+      />
+      <div className='flex flex-col justify-center md:flex-row flex-wrap w-full gap-32 mt-16'>
+        {countries?.map(({ flags, name, region, population, capital }: HomeCountries) => (
           <Card
-          key={index}
-          flags={country.flags}
-          name={country.name}
-          region={country.region}
-          population={country.population}
-          capital={country.capital}
-          handleOnClick={() => handleOnClick(country.name.common)}
+            key={name.official}
+            flags={flags}
+            name={name}
+            region={region}
+            population={population}
+            capital={capital}
+            handleOnClick={() => handleOnClick(name.common)}
           />
-      ))}
-     </div>
+        ))}
+      </div>
     </div>
   )
 };
