@@ -63,3 +63,13 @@ export interface CountryContextProps {
     code: number;
     status: string;
 }
+
+export interface HomeCountriesProps {
+    name:         Name;   
+    population:   number; 
+    flags:        Flags;
+    capital:      string[];
+    region:       string;
+    handleOpenLoading: () => void;
+}
+

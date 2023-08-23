@@ -8,7 +8,7 @@ export const CountryContext = createContext<CountryContextProps | undefined>(und
 export default function CountryProvider({ children }: { children: ReactNode }) {
   const [country, setCountry] = useState<string>('');
   const [countries, setCountries] = useState<HomeCountries[]>([]);
-
+  
   const values: CountryContextProps = { country, setCountry, countries, setCountries};
   return (
     <CountryContext.Provider value={values}>

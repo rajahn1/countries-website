@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { useRouter } from "next/navigation";
 
 export default function Header() {
-    const {systemTheme, theme, setTheme} = useTheme();
+    const { systemTheme, theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const router = useRouter();
 
@@ -29,7 +29,7 @@ export default function Header() {
     };
     return(
         <div className= "bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text flex justify-between h-24 items-center shadow-lg">
-            <div className=" ml-24 flex items-center">
+            <div className=" ml-12 flex items-center">
                 <FaGlobeAmericas
                 onClick={() => router.push('/')}
                 className="mr-4 cursor-pointer w-12" size="2xs"/>
