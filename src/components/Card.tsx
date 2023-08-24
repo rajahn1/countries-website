@@ -1,4 +1,4 @@
-import { HomeCountries, HomeCountriesProps } from "@/interfaces/CountryData";
+import { HomeCountriesProps } from "@/interfaces/CountryData";
 import formatNumber from "@/utils/FormatNumbers";
 import { useRouter } from "next/navigation";
 

@@ -18,12 +18,12 @@ export default function Header() {
         const currentTheme = theme === 'system' ? systemTheme : theme;
         if (currentTheme === 'dark') {
             return (
-            <FaSun className="w-6" size="sm" role="button" onClick={() => setTheme('light')} />
+            <FaSun size={25} role="button" onClick={() => setTheme('light')} />
             );
         }
         else {
             return(
-                <FaMoon className="w-6" size="sm" role="button" onClick={() => setTheme('dark')} />
+                <FaMoon size={25} role="button" onClick={() => setTheme('dark')} />
             );
         }
     };
@@ -31,8 +31,9 @@ export default function Header() {
         <div className= "bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text flex justify-between h-24 items-center shadow-lg">
             <div className=" ml-12 flex items-center">
                 <FaGlobeAmericas
+                size={30}
                 onClick={() => router.push('/')}
-                className="mr-4 cursor-pointer w-12" size="2xs"/>
+                className="mr-4 cursor-pointer"/>
                 <h2 className="text-2xl font-bold">  Where in the world?</h2>
             </div>
             <div className="mr-6 flex items-center hover:cursor-pointer">

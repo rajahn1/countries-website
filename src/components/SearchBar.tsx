@@ -4,7 +4,12 @@ import SearchLight from '../../public/search-white.png';
 import { useEffect, useState } from "react";
 import { useTheme } from 'next-themes';
 
-export default function SearchBar({ handleFilterCountries, handleFilterCountriesRegion }:any) {
+type PropsSearch = {
+    handleFilterCountries: (country: string) => void;
+    handleFilterCountriesRegion: (region: string) => void;
+}
+
+export default function SearchBar({ handleFilterCountries, handleFilterCountriesRegion }:PropsSearch) {
 
     const [inputSearch, setInputSearch] = useState('');
     const { systemTheme, theme } = useTheme();
@@ -63,8 +68,9 @@ export default function SearchBar({ handleFilterCountries, handleFilterCountries
                 /> 
             </div> 
             <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-10/12 md:w-2/12 rounded-md outline-none shadow-lg text-md p-4"
-            onChange={handleOptionChange}>
-                <option selected value=''> Filter By Region </option>
+            onChange={handleOptionChange}
+            defaultValue={''}>
+                <option value=''> Filter By Region </option>
                 <option value='africa'> Africa </option>
                 <option value='americas'> Americas </option>
                 <option value='asia'> Asia </option>

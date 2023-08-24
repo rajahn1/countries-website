@@ -26,7 +26,6 @@ export default function TableCountries({ data }:any) {
             }
         };
 
-        console.log(filteredCountries);
         setCountriesFiltered(filteredCountries);
     }
 
@@ -38,7 +37,6 @@ export default function TableCountries({ data }:any) {
           filteredCountries.push(country);
         }
 
-        console.log(filteredCountries);
         setCountriesFiltered(filteredCountries);
       };
     };
