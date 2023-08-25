@@ -1,14 +1,14 @@
 import CountryInformation from "@/components/CountryInformation";
 import { CountryI } from "@/interfaces/CountryData";
-import { api } from "@/providers/Api"
 
 const getCountryData = async (countryName: string) => {
-    try {
-        const res = await api.get(`/name/${countryName}`);
-        return res.data;
-    } catch (error) {
-        alert(error)
+    const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+    
+    if (!res.ok) {
+        throw new Error("Failed to load country")
     }
+    
+    return res.json();
 };
 
 export default async function SpecificCountry({ params }: any) {

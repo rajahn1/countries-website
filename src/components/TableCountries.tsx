@@ -5,21 +5,23 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 import Loading from "./Loading";
 import { verifyInputSearch } from "@/utils/compareInput";
-export default function TableCountries({ data }:any) {
 
-    const countriesData = data ? data : [];
-    const [countriesFiltered, setCountriesFiltered] = useState(data);
+type TableCountriesProp = {
+  data: HomeCountries[];
+}
+
+export default function TableCountries({ data }:TableCountriesProp) {
+  const [countriesFiltered, setCountriesFiltered] = useState(data);
 
     const [open, setOpen] = useState(false);
 
     const handleOpenLoading = () => {
       setOpen(true);
     };
-   
 
     const handleFilterCountriesName = (searchedCountry: string) => {
         const filteredCountries:any = [];
-        for (const country of countriesData) {
+        for (const country of data) {
             if (verifyInputSearch(country.name.common.toLowerCase(), searchedCountry.toLowerCase()) || 
                 verifyInputSearch(country.name.official.toLowerCase(), searchedCountry.toLowerCase())) {    
                 filteredCountries.push(country);
@@ -32,7 +34,7 @@ export default function TableCountries({ data }:any) {
     const handleFilterCountriesRegion = (selectedRegion: string) => {
       const filteredCountries:any = [];
 
-      for (const country of countriesData) {
+      for (const country of data) {
         if (country.region.toLowerCase() === selectedRegion.toLowerCase()){
           filteredCountries.push(country);
         }
@@ -40,6 +42,8 @@ export default function TableCountries({ data }:any) {
         setCountriesFiltered(filteredCountries);
       };
     };
+
+    if (!countriesFiltered) return <span> Ooops, data error xD</span>
 
     return(
         <>

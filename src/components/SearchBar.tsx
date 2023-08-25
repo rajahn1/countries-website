@@ -21,7 +21,6 @@ export default function SearchBar({ handleFilterCountries, handleFilterCountries
     }
         
     const filterCountriesName = () => {
-        console.log(inputSearch);
         handleFilterCountries(inputSearch);
     }
 
@@ -65,11 +64,15 @@ export default function SearchBar({ handleFilterCountries, handleFilterCountries
                 onChange={e => setInputSearch(e.target.value)}
                 value={inputSearch  ? inputSearch : ''}
                 onKeyUp={filterCountriesName}
+                name="country"
+                autoComplete="brazil"
                 /> 
             </div> 
             <select className="bg-light-elements text-light-text dark:bg-dark-elements dark:text-dark-text h-16 w-10/12 md:w-2/12 rounded-md outline-none shadow-lg text-md p-4"
             onChange={handleOptionChange}
-            defaultValue={''}>
+            defaultValue={''}
+            name="region"
+            autoComplete="americas">
                 <option value=''> Filter By Region </option>
                 <option value='africa'> Africa </option>
                 <option value='americas'> Americas </option>
