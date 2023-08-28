@@ -11,7 +11,7 @@ export default function Card({ flags, name, region, capital, population, handleO
     };
 
     return(
-    <div className="flex flex-col mb-16 h-80 w-[80%] md:max-w-[20%] md:min-w-[15%] bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text shadow-xl hover:opacity-90 hover:scale-105 hover:cursor-pointer rounded-md">
+    <div className="flex flex-col mb-16 h-80 w-[60%] md:max-w-[20%] md:min-w-[15%] bg-light-elements text-light-text dark:bg-dark-bg dark:text-dark-text shadow-xl hover:opacity-90 hover:scale-105 hover:cursor-pointer rounded-md">
         <img
         onClick={() => handleOnClick(name.common)}
         className="h-36 w-full border-2 dark:border-slate-300 border-slate-600"
