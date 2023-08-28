@@ -35,7 +35,7 @@ export default function CountryInformation({ flags, name, population, region, su
                                 <button key={index} className="shadow-md w-12 ">{border}</button> 
                             ))}
                             </div>
-                        ): "no borders"}
+                        ): " no borders"}
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 pt-10">

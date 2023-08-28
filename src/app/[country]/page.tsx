@@ -16,7 +16,7 @@ export default async function SpecificCountry({ params }: any) {
     const data: CountryI = arrayData[0];
     if (!data) return <span> error </span>    
     return (
-    <div className=" text-light-text bg-light-bg dark:text-dark-text dark:bg-dark-bg flex flex-col h-screen items-center pt-16">
+    <div className=" text-light-text bg-light-bg dark:text-dark-text dark:bg-dark-bg flex flex-col h-screen items-center p-12">
         <CountryInformation
         area={data.area}
         borders={data.borders}
